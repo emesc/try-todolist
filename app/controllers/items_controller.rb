@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to @item
+      redirect_to item_path(@item), notice: "Item updated successfully."
     else
       render 'edit'
     end
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to 'root_path'
+    redirect_to root_path, notice: "Item deleted successfully."
   end
 
   private
