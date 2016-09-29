@@ -41,7 +41,11 @@ class ItemsController < ApplicationController
   end
 
   def complete
-    @item.update_attribute(:completed_at, Time.now)
+    if @item.completed_at.blank?
+      @item.update_attribute(:completed_at, Time.now)
+    else
+      @item.update_attribute(:completed_at, '')
+    end
     redirect_to root_path
   end
 
